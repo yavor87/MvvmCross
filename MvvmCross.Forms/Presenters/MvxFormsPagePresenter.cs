@@ -587,6 +587,15 @@ namespace MvvmCross.Forms.Presenters
                     await PushOrReplacePage(FormsApplication.MainPage, tabHost, attribute);
                 }
 
+                if (attribute.WrapInNavigationPage)
+                {
+                    page = CreateNavigationPage(page).Build(tp =>
+                    {
+                        tp.Title = page.Title;
+                        tp.Icon = page.Icon;
+                    });
+                }
+
                 tabHost.Children.Add(page);
             }
             return true;
