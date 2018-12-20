@@ -23,6 +23,16 @@ namespace MvvmCross.Forms.Presenters.Attributes
         }
 
         public MasterDetailPosition Position { get; set; } = MasterDetailPosition.Detail;
+
+        /// <summary>
+        /// Specifies a view type that represents the MasterDetail root and is associated with this page. 
+        /// </summary>
+        /// <remarks>
+        /// This type is used in situations, in which there are multiple master - detail pages in the navigation
+        /// stack. The page presenter uses this property as a hint to what master detail root page should be used
+        /// to present this master or detail page.
+        /// </remarks>
+        public Type MasterHostViewType { get; set; }
     }
 
     public enum MasterDetailPosition

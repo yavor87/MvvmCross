@@ -448,7 +448,16 @@ namespace MvvmCross.Forms.Presenters
             }
             else
             {
-                var masterDetailHost = GetPageOfType<MasterDetailPage>();
+                MasterDetailPage masterDetailHost = null;
+                if (attr.MasterHostViewType != null)
+                {
+                    masterDetailHost = GetPageOfTypeByType(attr.MasterHostViewType) as MasterDetailPage;
+                }
+                if (masterDetailHost == null)
+                {
+                    masterDetailHost = GetPageOfType<MasterDetailPage>();
+                }
+
                 if (masterDetailHost == null)
                 {
                     //Assume we have to create the host
