@@ -864,6 +864,10 @@ namespace MvvmCross.Forms.Presenters
             }
             else if (rootPage is TabbedPage tabbedPage)
             {
+                var nestedPage = GetPageOfType<TPage>(tabbedPage.CurrentPage);
+                if (nestedPage is TPage)
+                    return nestedPage;
+
                 foreach (var item in tabbedPage.Children)
                 {
                     var nestedPage = GetPageOfType<TPage>(item);
